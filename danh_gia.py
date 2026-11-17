@@ -141,14 +141,41 @@ def chay_danh_gia(data, ra, duong_mo_hinh, ti_le_train=0.7, lan_lap=20, k_toi_da
     plt.ylim(0, 1.02); plt.grid(alpha=.4); plt.legend(loc="lower right")
     plt.tight_layout(); plt.savefig(os.path.join(ra, "hinh4_do_chinh_xac_theo_k.png"), dpi=150); plt.close()
 
-    plt.figure(figsize=(1 + .7 * n_nguoi, 1 + .7 * n_nguoi))
-    plt.imshow(cm, cmap="Blues")
+    # Ma trận nhầm lẫn: đặt kích thước tối thiểu đủ lớn để biểu đồ 2x2 không bị quá nhỏ.
+    # Khi có nhiều người, tăng kích thước theo số lớp và tự giảm cỡ chữ nhãn trục.
+    kich_thuoc_hinh = max(7.0, 4.5 + 0.75 * n_nguoi)
+    fig, ax = plt.subplots(figsize=(kich_thuoc_hinh, kich_thuoc_hinh * 0.85), dpi=160)
+    im = ax.imshow(cm, cmap="Blues", interpolation="nearest")
+
+    nguong_mau = cm.max() / 2 if cm.size else 0
+    co_chu_o = max(9, min(16, 18 - n_nguoi // 2))
     for i in range(n_nguoi):
         for j in range(n_nguoi):
-            plt.text(j, i, cm[i, j], ha="center", va="center")
-    plt.xticks(range(n_nguoi), ten, rotation=45); plt.yticks(range(n_nguoi), ten)
-    plt.xlabel("Dự đoán"); plt.ylabel("Thực tế"); plt.title(f"Ma trận nhầm lẫn (k = {k_theta}, cộng dồn {lan_lap} lần)")
-    plt.tight_layout(); plt.savefig(os.path.join(ra, "hinh5_ma_tran_nham_lan.png"), dpi=150); plt.close()
+            ax.text(
+                j, i, str(cm[i, j]),
+                ha="center", va="center",
+                fontsize=co_chu_o, fontweight="bold",
+                color="white" if cm[i, j] > nguong_mau else "black"
+            )
+
+    ax.set_xticks(range(n_nguoi))
+    ax.set_yticks(range(n_nguoi))
+    ax.set_xticklabels(ten, rotation=35, ha="right", fontsize=11)
+    ax.set_yticklabels(ten, fontsize=11)
+    ax.set_xlabel("Dự đoán", fontsize=13, labelpad=10)
+    ax.set_ylabel("Thực tế", fontsize=13, labelpad=10)
+    ax.set_title(
+        f"Ma trận nhầm lẫn (k = {k_theta}, cộng dồn {lan_lap} lần)",
+        fontsize=14, pad=14
+    )
+    ax.set_aspect("equal")
+    fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+    fig.tight_layout()
+    fig.savefig(
+        os.path.join(ra, "hinh5_ma_tran_nham_lan.png"),
+        dpi=220, bbox_inches="tight"
+    )
+    plt.close(fig)
 
     # ---------------------------------------------------------------- (C) Chọn ngưỡng eps
     d_biet = np.array(d_biet)
