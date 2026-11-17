@@ -542,7 +542,7 @@ class UngDung(tk.Tk):
         self._them_log(txt, (
             "QUY TRÌNH SỬ DỤNG\n"
             "1) Tab 2: nhập tên → 'Bật camera' → chụp ~20 ảnh (đổi góc đầu, biểu cảm). Lặp lại ở một phiên khác\n"
-            "   (đổi ánh sáng/thời điểm) để có ≥ 2 phiên mỗi người. Cần ít nhất 2 người (nên ≥ 3 để chọn được ngưỡng ε).\n"
+            "   (đổi ánh sáng/thời điểm) để có ≥ 2 phiên mỗi người. Chỉ cần 1 người vẫn huấn luyện và nhận dạng được; từ 2–3 người trở lên sẽ đánh giá và hiệu chỉnh phát hiện người lạ tốt hơn.\n"
             "   Có thể nạp ảnh từ bộ dữ liệu chuẩn bằng các nút 'Nạp ảnh có sẵn'.\n"
             "2) Tab 3: bấm 'Huấn luyện + đánh giá' → tạo mô hình, các hình cho báo cáo và ngưỡng ε.\n"
             "3) Tab 4: nhận dạng bằng webcam hoặc file ảnh. Tên xanh = người đã biết; đỏ = người lạ (d_min > ε).\n"
