@@ -1,75 +1,53 @@
+HỆ THỐNG NHẬN DẠNG KHUÔN MẶT SỬ DỤNG PCA
 
-# HỆ THỐNG NHẬN DẠNG KHUÔN MẶT SỬ DỤNG PCA (EIGENFACES)
+1. Giới thiệu
 
-## 1. Giới thiệu
+Đề tài xây dựng chương trình nhận dạng khuôn mặt sử dụng thuật toán PCA (Principal Component Analysis), hay còn gọi là phương pháp Eigenfaces.
 
-Dự án xây dựng hệ thống nhận dạng khuôn mặt sử dụng phương pháp Principal Component Analysis (PCA), cụ thể là thuật toán Eigenfaces.
+Chương trình hỗ trợ thu thập ảnh khuôn mặt, huấn luyện mô hình và nhận dạng khuôn mặt từ dữ liệu đầu vào.
 
-Chương trình hỗ trợ thu thập dữ liệu ảnh, huấn luyện mô hình, đánh giá kết quả và nhận dạng khuôn mặt thông qua giao diện người dùng.
+2. Công nghệ sử dụng
 
-## 2. Cấu trúc mã nguồn
+Ngôn ngữ lập trình: Python
 
-| STT | Tên file | Chức năng |
-|---|---|---|
-| 1 | [buoc1_thu_thap_anh.py](buoc1_thu_thap_anh.py) | Thu thập dữ liệu ảnh khuôn mặt |
-| 2 | [buoc2_huan_luyen_danh_gia.py](buoc2_huan_luyen_danh_gia.py) | Huấn luyện và đánh giá mô hình |
-| 3 | [buoc3_nhan_dang.py](buoc3_nhan_dang.py) | Thực hiện nhận dạng khuôn mặt |
-| 4 | [chay.py](chay.py) | Khởi chạy và điều phối chương trình |
-| 5 | [danh_gia.py](danh_gia.py) | Thực hiện đánh giá mô hình |
-| 6 | [duong_dan.py](duong_dan.py) | Quản lý đường dẫn dữ liệu và tài nguyên |
-| 7 | [gui.py](gui.py) | Xây dựng giao diện đồ họa |
-| 8 | [kiem_chung.py](kiem_chung.py) | Kiểm chứng các tính chất toán học |
-| 9 | [nhap_thu_cong.py](nhap_thu_cong.py) | Hỗ trợ nhập vùng khuôn mặt thủ công |
-| 10 | [pca_core.py](pca_core.py) | Cài đặt thuật toán PCA và Eigenfaces |
-| 11 | [requirements.txt](requirements.txt) | Danh sách thư viện cần thiết |
+Thư viện: OpenCV, NumPy và các thư viện được liệt kê trong requirements.txt
 
-## 3. Công nghệ sử dụng
+Thuật toán: PCA (Eigenfaces)
 
-- Python
-- NumPy
-- OpenCV
-- Matplotlib
-- Tkinter
+3. Cấu trúc dự án
 
-## 4. Cài đặt môi trường
+buoc1_thu_thap_anh.py: Thu thập ảnh khuôn mặt.
 
-### Bước 1: Tải mã nguồn
+buoc2_huan_luyen_danh_gia.py: Huấn luyện và đánh giá mô hình.
 
-```bash
-git clone https://github.com/tranquangphuc7a19-lang/BTL-DSTT-de-tai-5.git
-```
+buoc3_nhan_dang.py: Nhận dạng khuôn mặt.
 
-Hoặc tải trực tiếp repository dưới dạng ZIP.
+chay.py: Chạy chương trình.
 
-### Bước 2: Di chuyển vào thư mục dự án
+danh_gia.py: Chức năng đánh giá.
 
-```bash
-cd BTL-DSTT-de-tai-5
-```
+duong_dan.py: Quản lý đường dẫn.
 
-### Bước 3: Cài đặt thư viện
+gui.py: Giao diện chương trình.
 
-```bash
-pip install -r requirements.txt
-```
+kiem_chung.py: Chức năng kiểm chứng.
 
-## 5. Khởi chạy chương trình
+nhap_thu_cong.py: Nhập dữ liệu thủ công.
 
-Có thể khởi chạy chương trình bằng lệnh:
+pca_core.py: Phần xử lý thuật toán PCA.
 
-```bash
-python chay.py
-```
+requirements.txt: Danh sách thư viện cần cài đặt.
 
-Hoặc chạy trực tiếp giao diện:
+4. Kết quả thực nghiệm
 
-```bash
-python gui.py
-```
+Các hình ảnh giao diện, kết quả nhận dạng, biểu đồ và dữ liệu thực nghiệm được lưu trong các thư mục tương ứng:
 
-## 6. Repository mã nguồn
+results/
 
-Toàn bộ mã nguồn của dự án được lưu trữ tại:
+figures/
 
-[BTL-DSTT-de-tai-5 - GitHub](https://github.com/tranquangphuc7a19-lang/BTL-DSTT-de-tai-5)
+data/
 
+5. Mục đích
+
+Dự án được thực hiện phục vụ học tập và nghiên cứu thuật toán PCA trong bài toán nhận dạng khuôn mặt.
