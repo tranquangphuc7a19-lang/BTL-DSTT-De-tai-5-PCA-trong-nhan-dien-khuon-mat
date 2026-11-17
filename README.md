@@ -48,6 +48,8 @@ figures/
 
 data/
 
+video/
+
 5. Mục đích
 
 Dự án được thực hiện phục vụ học tập và nghiên cứu thuật toán PCA trong bài toán nhận dạng khuôn mặt.
