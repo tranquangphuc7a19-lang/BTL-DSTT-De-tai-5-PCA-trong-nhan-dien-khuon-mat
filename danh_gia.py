@@ -54,8 +54,8 @@ def chay_danh_gia(data, ra, duong_mo_hinh, ti_le_train=0.7, lan_lap=20, k_toi_da
     D, N = X.shape
     n_nguoi = len(ten)
     log(f"Đã nạp {N} ảnh của {n_nguoi} người: {', '.join(ten)}   (D = {D})")
-    if n_nguoi < 2:
-        raise RuntimeError("Cần ít nhất 2 người để nhận dạng.")
+    if n_nguoi < 1:
+        raise RuntimeError("Cần ít nhất 1 người và có ảnh hợp lệ để huấn luyện nhận dạng.")
 
     # ---------------------------------------------------------------- (A) Eigenfaces toàn bộ dữ liệu, chọn k theo (4.21)
     pca_all = Eigenfaces().fit(X)
@@ -178,7 +178,10 @@ def chay_danh_gia(data, ra, duong_mo_hinh, ti_le_train=0.7, lan_lap=20, k_toi_da
         plt.tight_layout(); plt.savefig(os.path.join(ra, "hinh6_nguong_eps.png"), dpi=150); plt.close()
     else:
         eps = float(np.percentile(d_biet, 95))
-        log(f"Chỉ có {n_nguoi} người nên không mô phỏng được người lạ. Tạm đặt ε = {eps:.3f} (phân vị 95% của người đã biết).")
+        if n_nguoi == 1:
+            log(f"Chế độ 1 người: ε = {eps:.3f} (phân vị 95% khoảng cách của người đã biết). Không đủ dữ liệu để hiệu chỉnh khả năng phát hiện người lạ; cần thử thêm người lạ thực tế.")
+        else:
+            log(f"Chỉ có {n_nguoi} người nên không mô phỏng được người lạ. Tạm đặt ε = {eps:.3f} (phân vị 95% của người đã biết).")
 
     # ---------------------------------------------------------------- (D) Mô hình cuối cùng trên toàn bộ dữ liệu
     W = pca_all.chieu(X, k_theta)
