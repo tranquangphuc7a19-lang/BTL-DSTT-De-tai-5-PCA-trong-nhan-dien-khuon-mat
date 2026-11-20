@@ -38,16 +38,6 @@ pca_core.py: Phần xử lý thuật toán PCA.
 
 requirements.txt: Danh sách thư viện cần cài đặt.
 
-4. Kết quả thực nghiệm
-
-Các hình ảnh giao diện, kết quả nhận dạng, biểu đồ và dữ liệu thực nghiệm được lưu trong các thư mục tương ứng:
-
-results/
-
-figures/
-
-data/
-
-5. Mục đích
+4. Mục đích
 
 Dự án được thực hiện phục vụ học tập và nghiên cứu thuật toán PCA trong bài toán nhận dạng khuôn mặt.
